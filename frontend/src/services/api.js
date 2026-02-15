@@ -117,13 +117,13 @@ export const registrationAPI = {
   purchaseMerchandise: (eventId, data) => api.post(`/events/${eventId}/purchase`, data),
   
   // Upload payment proof
-  uploadPaymentProof: (registrationId, data) => api.post(`/registrations/${registrationId}/payment-proof`, data),
+  uploadPaymentProof: (registrationId, data) => api.post(`/events/registrations/${registrationId}/payment-proof`, data),
   
   // Get ticket details
-  getTicketDetails: (registrationId) => api.get(`/registrations/${registrationId}`),
+  getTicketDetails: (registrationId) => api.get(`/events/registrations/${registrationId}`),
   
   // Cancel registration
-  cancelRegistration: (registrationId) => api.delete(`/registrations/${registrationId}`),
+  cancelRegistration: (registrationId) => api.delete(`/events/registrations/${registrationId}`),
 };
 
 // ============================================
