@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Base API URL
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 // Create axios instance
 const api = axios.create({
@@ -45,16 +45,16 @@ api.interceptors.response.use(
 
 export const authAPI = {
   // Register participant
-  register: (data) => api.post('/auth/register', data),
+  register: (data) => api.post('/api/auth/register', data),
   
   // Login (all roles)
-  login: (data) => api.post('/auth/login', data),
+  login: (data) => api.post('/api/auth/login', data),
   
   // Get current user
-  getMe: () => api.get('/auth/me'),
+  getMe: () => api.get('/api/auth/me'),
   
   // Change password
-  changePassword: (data) => api.put('/auth/change-password', data),
+  changePassword: (data) => api.put('/api/auth/change-password', data),
 };
 
 // ============================================
@@ -63,16 +63,16 @@ export const authAPI = {
 
 export const eventAPI = {
   // Browse all events with filters
-  browseEvents: (params) => api.get('/events', { params }),
+  browseEvents: (params) => api.get('/api/events', { params }),
   
   // Get trending events
-  getTrendingEvents: () => api.get('/events/trending'),
+  getTrendingEvents: () => api.get('/api/events/trending'),
   
   // Get single event details
-  getEventDetails: (id) => api.get(`/events/${id}`),
+  getEventDetails: (id) => api.get(`/api/events/${id}`),
   
   // Create event (organizer only)
-  createEvent: (data) => api.post('/events', data),
+  createEvent: (data) => api.post('/api/events', data),
 };
 
 // ============================================
@@ -81,28 +81,28 @@ export const eventAPI = {
 
 export const participantAPI = {
   // Get profile
-  getProfile: () => api.get('/participant/profile'),
+  getProfile: () => api.get('/api/participant/profile'),
   
   // Update profile
-  updateProfile: (data) => api.put('/participant/profile', data),
+  updateProfile: (data) => api.put('/api/participant/profile', data),
   
   // Update preferences
-  setPreferences: (data) => api.put('/participant/preferences', data),
+  setPreferences: (data) => api.put('/api/participant/preferences', data),
   
   // Get my registrations
-  getMyRegistrations: (params) => api.get('/participant/registrations', { params }),
+  getMyRegistrations: (params) => api.get('/api/participant/registrations', { params }),
   
   // Get upcoming events
-  getUpcomingEvents: () => api.get('/participant/upcoming'),
+  getUpcomingEvents: () => api.get('/api/participant/upcoming'),
   
   // Follow/unfollow organizer
-  toggleFollowOrganizer: (organizerId) => api.post(`/participant/follow/${organizerId}`),
+  toggleFollowOrganizer: (organizerId) => api.post(`/api/participant/follow/${organizerId}`),
   
   // Get all organizers
-  getOrganizers: () => api.get('/participant/organizers'),
+  getOrganizers: () => api.get('/api/participant/organizers'),
   
   // Get organizer details
-  getOrganizerDetails: (organizerId) => api.get(`/participant/organizers/${organizerId}`),
+  getOrganizerDetails: (organizerId) => api.get(`/api/participant/organizers/${organizerId}`),
 };
 
 // ============================================
@@ -111,19 +111,19 @@ export const participantAPI = {
 
 export const registrationAPI = {
   // Register for event
-  registerForEvent: (eventId, data) => api.post(`/events/${eventId}/register`, data),
+  registerForEvent: (eventId, data) => api.post(`/api/events/${eventId}/register`, data),
   
   // Purchase merchandise
-  purchaseMerchandise: (eventId, data) => api.post(`/events/${eventId}/purchase`, data),
+  purchaseMerchandise: (eventId, data) => api.post(`/api/events/${eventId}/purchase`, data),
   
   // Upload payment proof
-  uploadPaymentProof: (registrationId, data) => api.post(`/events/registrations/${registrationId}/payment-proof`, data),
+  uploadPaymentProof: (registrationId, data) => api.post(`/api/events/registrations/${registrationId}/payment-proof`, data),
   
   // Get ticket details
-  getTicketDetails: (registrationId) => api.get(`/events/registrations/${registrationId}`),
+  getTicketDetails: (registrationId) => api.get(`/api/events/registrations/${registrationId}`),
   
   // Cancel registration
-  cancelRegistration: (registrationId) => api.delete(`/events/registrations/${registrationId}`),
+  cancelRegistration: (registrationId) => api.delete(`/api/events/registrations/${registrationId}`),
 };
 
 // ============================================
@@ -132,54 +132,54 @@ export const registrationAPI = {
 
 export const organizerAPI = {
   // Profile management
-  getProfile: () => api.get('/organizer/profile'),
-  updateProfile: (data) => api.put('/organizer/profile', data),
+  getProfile: () => api.get('/api/organizer/profile'),
+  updateProfile: (data) => api.put('/api/organizer/profile', data),
   
   // Password reset requests
-  requestPasswordReset: (data) => api.post('/organizer/request-password-reset', data),
-  getMyPasswordResetRequests: () => api.get('/organizer/password-requests'),
+  requestPasswordReset: (data) => api.post('/api/organizer/request-password-reset', data),
+  getMyPasswordResetRequests: () => api.get('/api/organizer/password-requests'),
   
   // Get dashboard
-  getDashboard: () => api.get('/organizer/dashboard'),
+  getDashboard: () => api.get('/api/organizer/dashboard'),
   
   // Create event
-  createEvent: (data) => api.post('/events', data),
+  createEvent: (data) => api.post('/api/events', data),
   
   // Get my events
-  getMyEvents: (params) => api.get('/organizer/events', { params }),
+  getMyEvents: (params) => api.get('/api/organizer/events', { params }),
   
   // Get event details
-  getEventDetails: (id) => api.get(`/organizer/events/${id}`),
+  getEventDetails: (id) => api.get(`/api/organizer/events/${id}`),
   
   // Update event
-  updateEvent: (id, data) => api.put(`/organizer/events/${id}`, data),
+  updateEvent: (id, data) => api.put(`/api/organizer/events/${id}`, data),
   
   // Publish event
-  publishEvent: (id) => api.post(`/organizer/events/${id}/publish`),
+  publishEvent: (id) => api.post(`/api/organizer/events/${id}/publish`),
   
   // Close event
-  closeEvent: (id) => api.post(`/organizer/events/${id}/close`),
+  closeEvent: (id) => api.post(`/api/organizer/events/${id}/close`),
   
   // Complete event
-  completeEvent: (id) => api.post(`/organizer/events/${id}/complete`),
+  completeEvent: (id) => api.post(`/api/organizer/events/${id}/complete`),
   
   // Delete event
-  deleteEvent: (id) => api.delete(`/organizer/events/${id}`),
+  deleteEvent: (id) => api.delete(`/api/organizer/events/${id}`),
   
   // Get event registrations
-  getEventRegistrations: (id, params) => api.get(`/organizer/events/${id}/registrations`, { params }),
+  getEventRegistrations: (id, params) => api.get(`/api/organizer/events/${id}/registrations`, { params }),
   
   // Export registrations
-  exportRegistrations: (id) => api.get(`/organizer/events/${id}/export`, { responseType: 'blob' }),
+  exportRegistrations: (id) => api.get(`/api/organizer/events/${id}/export`, { responseType: 'blob' }),
   
   // Approve merchandise payment
-  approveMerchandisePayment: (id) => api.post(`/organizer/registrations/${id}/approve`),
+  approveMerchandisePayment: (id) => api.post(`/api/organizer/registrations/${id}/approve`),
   
   // Reject merchandise payment
-  rejectMerchandisePayment: (id, data) => api.post(`/organizer/registrations/${id}/reject`, data),
+  rejectMerchandisePayment: (id, data) => api.post(`/api/organizer/registrations/${id}/reject`, data),
   
   // Verify ticket (QR scanning)
-  verifyTicket: (ticketId) => api.post('/organizer/verify-ticket', { ticketId }),
+  verifyTicket: (ticketId) => api.post('/api/organizer/verify-ticket', { ticketId }),
 };
 
 // ============================================
@@ -188,33 +188,33 @@ export const organizerAPI = {
 
 export const adminAPI = {
   // Get system stats
-  getSystemStats: () => api.get('/admin/stats'),
+  getSystemStats: () => api.get('/api/admin/stats'),
   
   // Create organizer
-  createOrganizer: (data) => api.post('/admin/organizers', data),
+  createOrganizer: (data) => api.post('/api/admin/organizers', data),
   
   // Get all organizers
-  getAllOrganizers: () => api.get('/admin/organizers'),
+  getAllOrganizers: () => api.get('/api/admin/organizers'),
   
   // Get organizer details
-  getOrganizerDetails: (id) => api.get(`/admin/organizers/${id}`),
+  getOrganizerDetails: (id) => api.get(`/api/admin/organizers/${id}`),
   
   // Update organizer
-  updateOrganizer: (id, data) => api.put(`/admin/organizers/${id}`, data),
+  updateOrganizer: (id, data) => api.put(`/api/admin/organizers/${id}`, data),
   
   // Toggle organizer status
-  toggleOrganizerStatus: (id) => api.put(`/admin/organizers/${id}/toggle`),
+  toggleOrganizerStatus: (id) => api.put(`/api/admin/organizers/${id}/toggle`),
   
   // Delete organizer
-  deleteOrganizer: (id) => api.delete(`/admin/organizers/${id}`),
+  deleteOrganizer: (id) => api.delete(`/api/admin/organizers/${id}`),
   
   // Reset organizer password
-  resetOrganizerPassword: (id) => api.post(`/admin/organizers/${id}/reset-password`),
+  resetOrganizerPassword: (id) => api.post(`/api/admin/organizers/${id}/reset-password`),
   
   // Password reset requests
-  getPasswordResetRequests: () => api.get('/admin/password-requests'),
-  approvePasswordResetRequest: (id, data) => api.post(`/admin/password-requests/${id}/approve`, data),
-  rejectPasswordResetRequest: (id, data) => api.post(`/admin/password-requests/${id}/reject`, data),
+  getPasswordResetRequests: () => api.get('/api/admin/password-requests'),
+  approvePasswordResetRequest: (id, data) => api.post(`/api/admin/password-requests/${id}/approve`, data),
+  rejectPasswordResetRequest: (id, data) => api.post(`/api/admin/password-requests/${id}/reject`, data),
 };
 
 // ============================================
@@ -223,22 +223,22 @@ export const adminAPI = {
 
 export const discussionAPI = {
   // Get all discussions for an event
-  getEventDiscussions: (eventId) => api.get(`/discussions/event/${eventId}`),
+  getEventDiscussions: (eventId) => api.get(`/api/discussions/event/${eventId}`),
   
   // Post a new discussion message
-  postDiscussion: (eventId, data) => api.post(`/discussions/event/${eventId}`, data),
+  postDiscussion: (eventId, data) => api.post(`/api/discussions/event/${eventId}`, data),
   
   // Post a reply to a discussion
-  postReply: (discussionId, data) => api.post(`/discussions/${discussionId}/reply`, data),
+  postReply: (discussionId, data) => api.post(`/api/discussions/${discussionId}/reply`, data),
   
   // Toggle like on a discussion
-  toggleLike: (discussionId) => api.put(`/discussions/${discussionId}/like`),
+  toggleLike: (discussionId) => api.put(`/api/discussions/${discussionId}/like`),
   
   // Delete a discussion
-  deleteDiscussion: (discussionId) => api.delete(`/discussions/${discussionId}`),
+  deleteDiscussion: (discussionId) => api.delete(`/api/discussions/${discussionId}`),
   
   // Pin/unpin a discussion (organizer only)
-  togglePin: (discussionId) => api.put(`/discussions/${discussionId}/pin`),
+  togglePin: (discussionId) => api.put(`/api/discussions/${discussionId}/pin`),
 };
 
 // ============================================
@@ -247,13 +247,13 @@ export const discussionAPI = {
 
 export const feedbackAPI = {
   // Submit feedback for an event
-  submitFeedback: (registrationId, data) => api.post(`/feedback/${registrationId}`, data),
+  submitFeedback: (registrationId, data) => api.post(`/api/feedback/${registrationId}`, data),
   
   // Check if feedback submitted
-  checkFeedbackStatus: (registrationId) => api.get(`/feedback/check/${registrationId}`),
+  checkFeedbackStatus: (registrationId) => api.get(`/api/feedback/check/${registrationId}`),
   
   // Get event feedback (organizer only)
-  getEventFeedback: (eventId) => api.get(`/feedback/event/${eventId}`),
+  getEventFeedback: (eventId) => api.get(`/api/feedback/event/${eventId}`),
 };
 
 export default api;
