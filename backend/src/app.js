@@ -11,8 +11,20 @@ import { protect } from "./middleware/authMiddleware.js";
 
 const app = express();
 
+// CORS Configuration
+const corsOptions = {
+  origin: [
+    'http://localhost:5173',
+    'http://localhost:4173',
+    'https://dass-assignment-felicity.vercel.app',
+    'https://dass-assignment-felicity-gdxhykg04-anishracherlas-projects.vercel.app'
+  ],
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
 // Middleware
-app.use(cors()); // Enable CORS for frontend
+app.use(cors(corsOptions)); // Enable CORS for frontend
 app.use(express.json({ limit: "10mb" })); // Parse JSON with larger limit for images
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
