@@ -69,11 +69,11 @@
 }
 
 .profile-tabs button:hover {
-  color: #4f46e5;
+  color: #8b9dff;
 }
 
 .profile-tabs button.active {
-  color: #4f46e5;
+  color: #8b9dff;
 }
 
 .profile-tabs button.active::after {
@@ -83,16 +83,16 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: #4f46e5;
+  background: rgba(139, 157, 255, 0.8);
 }
 
 /* Form Sections */
 .profile-section,
 .security-section {
-  background: white;
+  background: #1a2332;
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .form-section {
@@ -121,7 +121,7 @@
 }
 
 .help-link {
-  color: #4f46e5;
+  color: #8b9dff;
   text-decoration: underline;
   margin-left: 0.5rem;
 }
@@ -165,8 +165,8 @@
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #4f46e5;
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  border-color: rgba(139, 157, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(139, 157, 255, 0.2);
 }
 
 .form-group input.disabled-field {
@@ -191,9 +191,9 @@
 /* Test Webhook Button */
 .test-webhook-btn {
   padding: 0.625rem 1.5rem;
-  background: #10b981;
-  color: white;
-  border: none;
+  background: rgba(139, 157, 255, 0.15);
+  color: #8b9dff;
+  border: 1px solid rgba(139, 157, 255, 0.3);
   border-radius: 8px;
   font-weight: 500;
   cursor: pointer;
@@ -222,12 +222,13 @@
 }
 
 .save-btn {
-  background: #4f46e5;
-  color: white;
+  background: rgba(139, 157, 255, 0.15);
+  color: #8b9dff;
+  border: 1px solid rgba(139, 157, 255, 0.3);
 }
 
 .save-btn:hover:not(:disabled) {
-  background: #4338ca;
+  background: rgba(139, 157, 255, 0.25);
 }
 
 .save-btn:disabled {
@@ -281,8 +282,8 @@
 
 /* Password Reset Request Styles */
 .info-banner {
-  background: #eff6ff;
-  border-left: 4px solid #3b82f6;
+  background: rgba(139, 157, 255, 0.1);
+  border-left: 4px solid rgba(139, 157, 255, 0.5);
   padding: 1rem;
   margin-bottom: 1.5rem;
   border-radius: 4px;
@@ -313,30 +314,30 @@
 }
 
 .request-card {
-  background: white;
-  border: 2px solid #e5e7eb;
+  background: #1a2332;
+  border: 2px solid rgba(139, 157, 255, 0.2);
   border-radius: 10px;
   padding: 1.5rem;
   transition: all 0.3s;
 }
 
 .request-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(139, 157, 255, 0.2);
 }
 
 .request-card.status-pending {
-  border-color: #fbbf24;
-  background: #fffbeb;
+  border-color: rgba(139, 157, 255, 0.4);
+  background: rgba(139, 157, 255, 0.08);
 }
 
 .request-card.status-approved {
-  border-color: #10b981;
-  background: #f0fdf4;
+  border-color: rgba(139, 157, 255, 0.4);
+  background: rgba(139, 157, 255, 0.12);
 }
 
 .request-card.status-rejected {
-  border-color: #ef4444;
-  background: #fef2f2;
+  border-color: rgba(139, 157, 255, 0.25);
+  background: rgba(139, 157, 255, 0.05);
 }
 
 .request-header {
@@ -403,8 +404,8 @@
 
 .new-password {
   display: block;
-  background: #1f2937;
-  color: #10b981;
+  background: #1a2332;
+  color: #8b9dff;
   padding: 0.75rem 1rem;
   border-radius: 6px;
   font-family: 'Courier New', monospace;
@@ -417,7 +418,7 @@
 
 .password-hint {
   display: block;
-  color: #dc2626;
+  color: #9ca3af;
   font-size: 0.85rem;
   margin-top: 0.5rem;
   font-weight: 500;
@@ -425,11 +426,11 @@
 }
 
 .admin-comments {
-  background: #fef2f2;
+  background: rgba(139, 157, 255, 0.1);
   padding: 1rem;
   border-radius: 8px;
   margin-top: 1rem;
-  border-left: 4px solid #ef4444;
+  border-left: 4px solid rgba(139, 157, 255, 0.4);
 }
 
 .admin-comments p {

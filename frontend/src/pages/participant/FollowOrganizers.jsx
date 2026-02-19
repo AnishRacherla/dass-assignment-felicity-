@@ -217,31 +217,39 @@ function FollowOrganizers() {
                 </div>
               </div>
 
-              {/* Organizer Info */}
-              <div className="organizer-info">
-                <h3>{organizer.organizerName || 'Unknown Organizer'}</h3>
-                
-                {organizer.category && (
-                  <span className="category-badge">
-                    {organizer.category}
+              {/* Organizer Name */}
+              <h3 className="organizer-name">{organizer.organizerName || 'Unknown Organizer'}</h3>
+              
+              {/* Category Badge */}
+              {organizer.category && (
+                <span className="category-badge">
+                  {organizer.category}
+                </span>
+              )}
+
+              {/* Single Line Info */}
+              <div className="organizer-meta">
+                {organizer.firstName && (
+                  <span className="meta-item">
+                    👤 {organizer.firstName} {organizer.lastName}
                   </span>
                 )}
-
-                {organizer.description && (
-                  <p className="description">
-                    {organizer.description.length > 100 
-                      ? organizer.description.substring(0, 100) + '...'
-                      : organizer.description
-                    }
-                  </p>
-                )}
-
                 {organizer.contactEmail && (
-                  <p className="contact-email">
+                  <span className="meta-item">
                     📧 {organizer.contactEmail}
-                  </p>
+                  </span>
                 )}
               </div>
+
+              {/* Description */}
+              {organizer.description && (
+                <p className="description">
+                  {organizer.description.length > 80 
+                    ? organizer.description.substring(0, 80) + '...'
+                    : organizer.description
+                  }
+                </p>
+              )}
 
               {/* Follow Button */}
               <div className="organizer-actions">

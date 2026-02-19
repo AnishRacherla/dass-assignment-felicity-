@@ -17,25 +17,40 @@ import nodemailer from "nodemailer";
  * CREATE EMAIL TRANSPORTER
  * This creates the connection to the email server
  * 
- * Development Mode: Uses fake email (ethereal.email) - emails don't actually send
- * Production Mode: Uses real email service (Gmail, SendGrid, etc.)
+ * IMPORTANT: To send real emails, you need to:
+ * 1. Set NODE_ENV=production in your .env file
+ * 2. Set EMAIL_USER to your Gmail address
+ * 3. Set EMAIL_PASSWORD to your Gmail App Password (NOT your regular password!)
+ *    - Go to Google Account > Security > 2-Step Verification > App passwords
+ *    - Generate a 16-character app password
+ * 
+ * If environment variables are not set, emails won't be sent (test mode).
  */
 const createTransporter = async () => {
   try {
-    // Check if we're in production or development
-    if (process.env.NODE_ENV === "production") {
-      // PRODUCTION: Use real email service
-      // Example: Gmail, SendGrid, AWS SES, etc.
+    // Check if email credentials are configured
+    const hasEmailConfig = process.env.EMAIL_USER && process.env.EMAIL_PASSWORD;
+    
+    if (hasEmailConfig && process.env.NODE_ENV === "production") {
+      // PRODUCTION MODE: Send real emails via Gmail
+      console.log('📧 Email Service: Using Gmail to send real emails');
+      console.log(`📧 Sending from: ${process.env.EMAIL_USER}`);
+      
       return nodemailer.createTransport({
-        service: process.env.EMAIL_SERVICE || "gmail", // Email provider
+        service: process.env.EMAIL_SERVICE || "gmail",
         auth: {
-          user: process.env.EMAIL_USER,     // Your email address
-          pass: process.env.EMAIL_PASSWORD, // App password (not regular password!)
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASSWORD,
         },
       });
     } else {
-      // DEVELOPMENT: Use fake email server
-      // For now, just return a test account
+      // TEST MODE: Fake email server (emails don't actually send)
+      console.log('⚠️ Email Service: Test mode (emails will NOT be sent)');
+      console.log('⚠️ To send real emails:');
+      console.log('   1. Set NODE_ENV=production in .env file');
+      console.log('   2. Add EMAIL_USER=your-email@gmail.com');
+      console.log('   3. Add EMAIL_PASSWORD=your-app-password (get from Google Account settings)');
+      
       const testAccount = await nodemailer.createTestAccount();
       return nodemailer.createTransport({
         host: "smtp.ethereal.email",
@@ -125,17 +140,24 @@ export const sendRegistrationEmail = async ({
 
     const info = await transporter.sendMail(mailOptions);
     
-    console.log("✅ Email sent:", info.messageId);
+    console.log("✅ Registration email sent successfully!");
+    console.log(`   To: ${to}`);
+    console.log(`   Message ID: ${info.messageId}`);
     
-    // For development, log the preview URL
-    if (process.env.NODE_ENV !== "production") {
-      console.log("📧 Preview URL:", nodemailer.getTestMessageUrl(info));
+    // For test mode, show preview URL
+    if (!process.env.EMAIL_USER || process.env.NODE_ENV !== "production") {
+      const previewUrl = nodemailer.getTestMessageUrl(info);
+      console.log("📧 Test Email Preview:", previewUrl);
+      console.log("⚠️ This is a TEST email. To send real emails, configure .env file.");
     }
     
     return info;
   } catch (error) {
-    console.error("❌ Email sending error:", error);
-    throw new Error("Failed to send email");
+    console.error("❌ Failed to send registration email:", error.message);
+    if (error.code === 'EAUTH') {
+      console.error("⚠️ Email authentication failed. Check your EMAIL_USER and EMAIL_PASSWORD in .env");
+    }
+    throw error;
   }
 };
 

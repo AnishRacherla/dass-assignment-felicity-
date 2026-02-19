@@ -27,6 +27,8 @@ function EventDetails() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [newMessagesCount, setNewMessagesCount] = useState(0);
+  const [showTicketModal, setShowTicketModal] = useState(false);
+  const [ticketData, setTicketData] = useState(null);
 
   // Form state
   const [formResponse, setFormResponse] = useState({});
@@ -123,10 +125,16 @@ function EventDetails() {
       setSuccess(response.data.message);
       setIsRegistered(true);
       
-      // Redirect to registrations page after 2 seconds
-      setTimeout(() => {
-        navigate('/registrations');
-      }, 2000);
+      // Show ticket modal with QR code if registration data is available
+      if (response.data.registration) {
+        setTicketData(response.data.registration);
+        setShowTicketModal(true);
+      } else {
+        // Fallback: Redirect to registrations page after 2 seconds
+        setTimeout(() => {
+          navigate('/registrations');
+        }, 2000);
+      }
 
     } catch (err) {
       console.error('Registration failed:', err);
@@ -434,6 +442,63 @@ function EventDetails() {
       {!isRegistrationOpen() && !isRegistered && (
         <div className="closed-message">
           Registration for this event is closed.
+        </div>
+      )}
+
+      {/* Ticket Modal - Show QR Code After Registration */}
+      {showTicketModal && ticketData && (
+        <div className="modal-overlay" onClick={() => setShowTicketModal(false)}>
+          <div className="modal-content ticket-modal" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={() => setShowTicketModal(false)}>×</button>
+            
+            <div className="ticket-success">
+              <h2>🎉 Registration Successful!</h2>
+              <p>Your ticket has been generated</p>
+            </div>
+
+            <div className="ticket-details">
+              <div className="ticket-id-box">
+                <label>Ticket ID</label>
+                <div className="ticket-id">{ticketData.ticketId}</div>
+              </div>
+
+              {ticketData.qrCode && (
+                <div className="qr-code-section">
+                  <p><strong>Your QR Code</strong></p>
+                  <img src={ticketData.qrCode} alt="Ticket QR Code" className="qr-code-image" />
+                  <p className="qr-hint">Show this QR code at the event venue</p>
+                </div>
+              )}
+
+              <div className="ticket-info">
+                <p><strong>Event:</strong> {event.eventName}</p>
+                <p><strong>Date:</strong> {formatDate(event.eventStartDate)}</p>
+                {ticketData.paymentStatus && (
+                  <p><strong>Payment Status:</strong> <span className={`status-${ticketData.paymentStatus.toLowerCase()}`}>{ticketData.paymentStatus}</span></p>
+                )}
+              </div>
+
+              <div className="email-notice">
+                <p>📧 A copy of your ticket has been sent to your email: <strong>{user?.email}</strong></p>
+                <p className="email-hint">If you don't receive it, check your spam folder or view it in "My Registrations"</p>
+              </div>
+            </div>
+
+            <div className="ticket-actions">
+              <button 
+                className="btn-primary" 
+                onClick={() => navigate('/registrations')}
+              >
+                View All My Tickets
+              </button>
+              <button 
+                className="btn-secondary" 
+                onClick={() => setShowTicketModal(false)}
+              >
+                Close
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>

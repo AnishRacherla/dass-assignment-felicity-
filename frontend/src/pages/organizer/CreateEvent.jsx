@@ -130,23 +130,23 @@ function CreateEvent() {
   return (
     <div style={{ padding: '40px', maxWidth: '900px', margin: '0 auto' }}>
       <div style={{ marginBottom: '30px' }}>
-        <h1>Create New Event</h1>
-        <p style={{ color: '#666' }}>Fill in the details to create a new event</p>
+        <h1 style={{ color: '#e5e7eb' }}>Create New Event</h1>
+        <p style={{ color: '#9ca3af' }}>Fill in the details to create a new event</p>
       </div>
 
       {error && (
-        <div style={{ background: '#fee', padding: '15px', borderRadius: '6px', color: '#c00', marginBottom: '20px' }}>
+        <div style={{ background: 'rgba(239, 68, 68, 0.1)', padding: '15px', borderRadius: '6px', color: '#ef4444', marginBottom: '20px', border: '1px solid rgba(239, 68, 68, 0.3)' }}>
           {error}
         </div>
       )}
 
       <form onSubmit={handleSubmit}>
         {/* Basic Details */}
-        <div style={{ background: '#f8f9fa', padding: '24px', borderRadius: '8px', marginBottom: '24px' }}>
-          <h2 style={{ marginTop: 0 }}>Basic Details</h2>
+        <div style={{ background: '#1a2332', padding: '24px', borderRadius: '8px', marginBottom: '24px', border: '1px solid rgba(139, 157, 255, 0.2)' }}>
+          <h2 style={{ marginTop: 0, color: '#e5e7eb' }}>Basic Details</h2>
 
           <div style={{ marginBottom: '20px' }}>
-            <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Event Name *</label>
+            <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500', color: '#e5e7eb' }}>Event Name *</label>
             <input
               type="text"
               name="eventName"
@@ -154,12 +154,12 @@ function CreateEvent() {
               onChange={handleChange}
               required
               placeholder="Hackathon 2026"
-              style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ddd' }}
+              style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid rgba(139, 157, 255, 0.2)', background: '#0f1419', color: '#e5e7eb' }}
             />
           </div>
 
           <div style={{ marginBottom: '20px' }}>
-            <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Description *</label>
+            <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500', color: '#e5e7eb' }}>Description *</label>
             <textarea
               name="description"
               value={formData.description}
@@ -167,30 +167,30 @@ function CreateEvent() {
               required
               rows="4"
               placeholder="Describe your event..."
-              style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ddd' }}
+              style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid rgba(139, 157, 255, 0.2)', background: '#0f1419', color: '#e5e7eb' }}
             />
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
             <div>
-              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Event Type *</label>
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500', color: '#e5e7eb' }}>Event Type *</label>
               <select
                 name="eventType"
                 value={formData.eventType}
                 onChange={handleChange}
-                style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ddd' }}
+                style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid rgba(139, 157, 255, 0.2)', background: '#0f1419', color: '#e5e7eb' }}
               >
                 <option value="NORMAL">Normal Event</option>
                 <option value="MERCHANDISE">Merchandise</option>
               </select>
             </div>
             <div>
-              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Eligibility *</label>
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500', color: '#e5e7eb' }}>Eligibility *</label>
               <select
                 name="eligibility"
                 value={formData.eligibility}
                 onChange={handleChange}
-                style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ddd' }}
+                style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid rgba(139, 157, 255, 0.2)', background: '#0f1419', color: '#e5e7eb' }}
               >
                 <option value="ALL">All Participants</option>
                 <option value="IIIT_ONLY">IIIT Students Only</option>
@@ -201,31 +201,31 @@ function CreateEvent() {
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
             <div>
-              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Event Start Date *</label>
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500', color: '#e5e7eb' }}>Event Start Date *</label>
               <input
                 type="datetime-local"
                 name="eventStartDate"
                 value={formData.eventStartDate}
                 onChange={handleChange}
                 required
-                style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ddd' }}
+                style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid rgba(139, 157, 255, 0.2)', background: '#0f1419', color: '#e5e7eb' }}
               />
             </div>
             <div>
-              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Event End Date *</label>
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500', color: '#e5e7eb' }}>Event End Date *</label>
               <input
                 type="datetime-local"
                 name="eventEndDate"
                 value={formData.eventEndDate}
                 onChange={handleChange}
                 required
-                style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ddd' }}
+                style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid rgba(139, 157, 255, 0.2)', background: '#0f1419', color: '#e5e7eb' }}
               />
             </div>
           </div>
 
           <div style={{ marginBottom: '20px' }}>
-            <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Venue *</label>
+            <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500', color: '#e5e7eb' }}>Venue *</label>
             <input
               type="text"
               name="venue"
@@ -233,72 +233,72 @@ function CreateEvent() {
               onChange={handleChange}
               required
               placeholder="Auditorium, Online, etc."
-              style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ddd' }}
+              style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid rgba(139, 157, 255, 0.2)', background: '#0f1419', color: '#e5e7eb' }}
             />
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px' }}>
             <div>
-              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Registration Deadline *</label>
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500', color: '#e5e7eb' }}>Registration Deadline *</label>
               <input
                 type="datetime-local"
                 name="registrationDeadline"
                 value={formData.registrationDeadline}
                 onChange={handleChange}
                 required
-                style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ddd' }}
+                style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid rgba(139, 157, 255, 0.2)', background: '#0f1419', color: '#e5e7eb' }}
               />
             </div>
             <div>
-              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Registration Limit</label>
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500', color: '#e5e7eb' }}>Registration Limit</label>
               <input
                 type="number"
                 name="registrationLimit"
                 value={formData.registrationLimit}
                 onChange={handleChange}
                 placeholder="Leave empty for unlimited"
-                style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ddd' }}
+                style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid rgba(139, 157, 255, 0.2)', background: '#0f1419', color: '#e5e7eb' }}
               />
             </div>
             <div>
-              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Registration Fee (₹)</label>
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500', color: '#e5e7eb' }}>Registration Fee (₹)</label>
               <input
                 type="number"
                 name="registrationFee"
                 value={formData.registrationFee}
                 onChange={handleChange}
                 min="0"
-                style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ddd' }}
+                style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid rgba(139, 157, 255, 0.2)', background: '#0f1419', color: '#e5e7eb' }}
               />
             </div>
           </div>
 
           <div style={{ marginTop: '20px' }}>
-            <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Tags (comma-separated)</label>
+            <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500', color: '#e5e7eb' }}>Tags (comma-separated)</label>
             <input
               type="text"
               name="tags"
               value={formData.tags}
               onChange={handleChange}
               placeholder="hackathon, coding, competition"
-              style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ddd' }}
+              style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid rgba(139, 157, 255, 0.2)', background: '#0f1419', color: '#e5e7eb' }}
             />
           </div>
         </div>
 
         {/* Custom Form Builder for Normal Events */}
         {formData.eventType === 'NORMAL' && (
-          <div style={{ background: '#f8f9fa', padding: '24px', borderRadius: '8px', marginBottom: '24px' }}>
-            <h2 style={{ marginTop: 0 }}>Custom Registration Form (Optional)</h2>
-            <p style={{ color: '#666', marginBottom: '20px' }}>Add custom fields participants must fill during registration</p>
+          <div style={{ background: '#1a2332', padding: '24px', borderRadius: '8px', marginBottom: '24px', border: '1px solid rgba(139, 157, 255, 0.2)' }}>
+            <h2 style={{ marginTop: 0, color: '#e5e7eb' }}>Custom Registration Form (Optional)</h2>
+            <p style={{ color: '#9ca3af', marginBottom: '20px' }}>Add custom fields participants must fill during registration</p>
 
             {/* Added Fields */}
             {customForm.length > 0 && (
               <div style={{ marginBottom: '20px' }}>
-                <h4>Form Fields:</h4>
+                <h4 style={{ color: '#e5e7eb' }}>Form Fields:</h4>
                 {customForm.map((field, index) => (
-                  <div key={index} style={{ background: '#fff', padding: '12px', marginBottom: '10px', borderRadius: '6px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div>
+                  <div key={index} style={{ background: '#0f1419', padding: '12px', marginBottom: '10px', borderRadius: '6px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', border: '1px solid rgba(139, 157, 255, 0.2)' }}>
+                    <div style={{ color: '#e5e7eb' }}>
                       <strong>{field.fieldName}</strong> ({field.fieldType})
                       {field.required && <span style={{ color: '#ef4444', marginLeft: '8px' }}>*</span>}
                     </div>
@@ -315,25 +315,25 @@ function CreateEvent() {
             )}
 
             {/* Add New Field */}
-            <div style={{ background: '#fff', padding: '15px', borderRadius: '6px' }}>
+            <div style={{ background: '#0f1419', padding: '15px', borderRadius: '6px', border: '1px solid rgba(139, 157, 255, 0.2)' }}>
               <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr auto', gap: '10px', marginBottom: '10px' }}>
                 <input
                   type="text"
                   placeholder="Field name (e.g., Team Name)"
                   value={newField.fieldName}
                   onChange={(e) => setNewField({ ...newField, fieldName: e.target.value })}
-                  style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ddd' }}
+                  style={{ padding: '8px', borderRadius: '4px', border: '1px solid rgba(139, 157, 255, 0.2)', background: '#1a2332', color: '#e5e7eb' }}
                 />
                 <select
                   value={newField.fieldType}
                   onChange={(e) => setNewField({ ...newField, fieldType: e.target.value })}
-                  style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ddd' }}
+                  style={{ padding: '8px', borderRadius: '4px', border: '1px solid rgba(139, 157, 255, 0.2)', background: '#1a2332', color: '#e5e7eb' }}
                 >
                   <option value="text">Text</option>
                   <option value="textarea">Textarea</option>
                   <option value="dropdown">Dropdown</option>
                 </select>
-                <label style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#e5e7eb' }}>
                   <input
                     type="checkbox"
                     checked={newField.required}
@@ -348,7 +348,7 @@ function CreateEvent() {
                   placeholder="Options (comma-separated)"
                   value={newField.options}
                   onChange={(e) => setNewField({ ...newField, options: e.target.value })}
-                  style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ddd', marginBottom: '10px' }}
+                  style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid rgba(139, 157, 255, 0.2)', marginBottom: '10px', background: '#1a2332', color: '#e5e7eb' }}
                 />
               )}
               <button
@@ -364,35 +364,35 @@ function CreateEvent() {
 
         {/* Merchandise Options */}
         {formData.eventType === 'MERCHANDISE' && (
-          <div style={{ background: '#f8f9fa', padding: '24px', borderRadius: '8px', marginBottom: '24px' }}>
-            <h2 style={{ marginTop: 0 }}>Merchandise Details</h2>
+          <div style={{ background: '#1a2332', padding: '24px', borderRadius: '8px', marginBottom: '24px', border: '1px solid rgba(139, 157, 255, 0.2)' }}>
+            <h2 style={{ marginTop: 0, color: '#e5e7eb' }}>Merchandise Details</h2>
 
             <div style={{ marginBottom: '20px' }}>
-              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Available Sizes (comma-separated)</label>
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500', color: '#e5e7eb' }}>Available Sizes (comma-separated)</label>
               <input
                 type="text"
                 name="sizes"
                 value={formData.sizes}
                 onChange={handleChange}
                 placeholder="S, M, L, XL, XXL"
-                style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ddd' }}
+                style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid rgba(139, 157, 255, 0.2)', background: '#0f1419', color: '#e5e7eb' }}
               />
             </div>
 
             <div style={{ marginBottom: '20px' }}>
-              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Available Colors (comma-separated)</label>
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500', color: '#e5e7eb' }}>Available Colors (comma-separated)</label>
               <input
                 type="text"
                 name="colors"
                 value={formData.colors}
                 onChange={handleChange}
                 placeholder="Black, White, Blue"
-                style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ddd' }}
+                style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid rgba(139, 157, 255, 0.2)', background: '#0f1419', color: '#e5e7eb' }}
               />
             </div>
 
             <div>
-              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Stock Quantity *</label>
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500', color: '#e5e7eb' }}>Stock Quantity *</label>
               <input
                 type="number"
                 name="stock"
@@ -400,7 +400,7 @@ function CreateEvent() {
                 onChange={handleChange}
                 required
                 min="1"
-                style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ddd' }}
+                style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid rgba(139, 157, 255, 0.2)', background: '#0f1419', color: '#e5e7eb' }}
               />
             </div>
           </div>

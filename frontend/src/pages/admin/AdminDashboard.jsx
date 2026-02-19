@@ -101,28 +101,28 @@ function AdminDashboard() {
   return (
     <div style={{ padding: '40px', maxWidth: '1200px', margin: '0 auto' }}>
       <div style={{ marginBottom: '30px' }}>
-        <h1>Admin Dashboard</h1>
-        <p style={{ color: '#666' }}>Manage organizers and view system statistics</p>
+        <h1 style={{ color: '#e5e7eb' }}>Admin Dashboard</h1>
+        <p style={{ color: '#9ca3af' }}>Manage organizers and view system statistics</p>
       </div>
 
       {/* System Stats */}
       {stats && (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', marginBottom: '40px' }}>
-          <div style={{ background: '#f8f9fa', padding: '20px', borderRadius: '8px' }}>
-            <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#4f46e5' }}>{stats.totalEvents || 0}</div>
-            <div style={{ color: '#666', marginTop: '5px' }}>Total Events</div>
+          <div style={{ background: '#1a2332', padding: '20px', borderRadius: '12px', border: '1px solid rgba(139, 157, 255, 0.2)' }}>
+            <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#8b9dff' }}>{stats.totalEvents || 0}</div>
+            <div style={{ color: '#9ca3af', marginTop: '5px' }}>Total Events</div>
           </div>
-          <div style={{ background: '#f8f9fa', padding: '20px', borderRadius: '8px' }}>
-            <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#10b981' }}>{stats.totalParticipants || 0}</div>
-            <div style={{ color: '#666', marginTop: '5px' }}>Total Participants</div>
+          <div style={{ background: '#1a2332', padding: '20px', borderRadius: '12px', border: '1px solid rgba(139, 157, 255, 0.2)' }}>
+            <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#8b9dff' }}>{stats.totalParticipants || 0}</div>
+            <div style={{ color: '#9ca3af', marginTop: '5px' }}>Total Participants</div>
           </div>
-          <div style={{ background: '#f8f9fa', padding: '20px', borderRadius: '8px' }}>
-            <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#f59e0b' }}>{stats.totalOrganizers || 0}</div>
-            <div style={{ color: '#666', marginTop: '5px' }}>Total Organizers</div>
+          <div style={{ background: '#1a2332', padding: '20px', borderRadius: '12px', border: '1px solid rgba(139, 157, 255, 0.2)' }}>
+            <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#8b9dff' }}>{stats.totalOrganizers || 0}</div>
+            <div style={{ color: '#9ca3af', marginTop: '5px' }}>Total Organizers</div>
           </div>
-          <div style={{ background: '#f8f9fa', padding: '20px', borderRadius: '8px' }}>
-            <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#ef4444' }}>{stats.totalRegistrations || 0}</div>
-            <div style={{ color: '#666', marginTop: '5px' }}>Total Registrations</div>
+          <div style={{ background: '#1a2332', padding: '20px', borderRadius: '12px', border: '1px solid rgba(139, 157, 255, 0.2)' }}>
+            <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#8b9dff' }}>{stats.totalRegistrations || 0}</div>
+            <div style={{ color: '#9ca3af', marginTop: '5px' }}>Total Registrations</div>
           </div>
         </div>
       )}
@@ -132,13 +132,14 @@ function AdminDashboard() {
         <button
           onClick={() => setShowCreateForm(!showCreateForm)}
           style={{
-            background: '#4f46e5',
-            color: 'white',
+            background: '#8b9dff',
+            color: '#0f1419',
             padding: '12px 24px',
             border: 'none',
-            borderRadius: '6px',
+            borderRadius: '8px',
             cursor: 'pointer',
-            fontSize: '16px'
+            fontSize: '16px',
+            fontWeight: '600'
           }}
         >
           {showCreateForm ? '❌ Cancel' : '➕ Create New Organizer (Club Head)'}
@@ -147,29 +148,29 @@ function AdminDashboard() {
 
       {/* Create Organizer Form */}
       {showCreateForm && (
-        <div style={{ background: '#f8f9fa', padding: '30px', borderRadius: '8px', marginBottom: '40px' }}>
-          <h2>Create New Organizer</h2>
-          <p style={{ color: '#666', marginBottom: '20px' }}>
+        <div style={{ background: '#1a2332', padding: '30px', borderRadius: '12px', marginBottom: '40px', border: '1px solid rgba(139, 157, 255, 0.2)' }}>
+          <h2 style={{ color: '#e5e7eb' }}>Create New Organizer</h2>
+          <p style={{ color: '#9ca3af', marginBottom: '20px' }}>
             Create a new club head/organizer who can create and manage events
           </p>
 
-          {error && <div style={{ background: '#fee', padding: '15px', borderRadius: '6px', color: '#c00', marginBottom: '20px' }}>{error}</div>}
+          {error && <div style={{ background: 'rgba(239, 68, 68, 0.2)', padding: '15px', borderRadius: '8px', color: '#ef4444', marginBottom: '20px', border: '1px solid #ef4444' }}>{error}</div>}
           {success && (
-            <div style={{ background: '#d1fae5', padding: '20px', borderRadius: '8px', marginBottom: '20px', border: '2px solid #10b981' }}>
-              <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#065f46', marginBottom: '10px' }}>
+            <div style={{ background: 'rgba(16, 185, 129, 0.15)', padding: '20px', borderRadius: '12px', marginBottom: '20px', border: '2px solid #10b981' }}>
+              <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#10b981', marginBottom: '10px' }}>
                 ✅ Organizer Created Successfully!
               </div>
-              <div style={{ background: '#fff', padding: '15px', borderRadius: '6px', marginTop: '10px' }}>
-                <div style={{ fontWeight: '600', color: '#333', marginBottom: '5px' }}>📧 Login Email:</div>
-                <div style={{ fontFamily: 'monospace', fontSize: '16px', color: '#4f46e5', marginBottom: '15px', userSelect: 'all' }}>
+              <div style={{ background: '#0f1419', padding: '15px', borderRadius: '8px', marginTop: '10px', border: '1px solid rgba(139, 157, 255, 0.2)' }}>
+                <div style={{ fontWeight: '600', color: '#e5e7eb', marginBottom: '5px' }}>📧 Login Email:</div>
+                <div style={{ fontFamily: 'monospace', fontSize: '16px', color: '#8b9dff', marginBottom: '15px', userSelect: 'all' }}>
                   {formData.loginEmail}
                 </div>
-                <div style={{ fontWeight: '600', color: '#333', marginBottom: '5px' }}>🔑 Password (copy this now):</div>
-                <div style={{ fontFamily: 'monospace', fontSize: '16px', color: '#dc2626', fontWeight: 'bold', userSelect: 'all', padding: '10px', background: '#fef2f2', borderRadius: '4px' }}>
+                <div style={{ fontWeight: '600', color: '#e5e7eb', marginBottom: '5px' }}>🔑 Password (copy this now):</div>
+                <div style={{ fontFamily: 'monospace', fontSize: '16px', color: '#ef4444', fontWeight: 'bold', userSelect: 'all', padding: '10px', background: 'rgba(239, 68, 68, 0.1)', borderRadius: '6px', border: '1px solid rgba(239, 68, 68, 0.3)' }}>
                   {success.split('Password: ')[1]}
                 </div>
               </div>
-              <div style={{ marginTop: '15px', padding: '10px', background: '#fff3cd', borderRadius: '6px', fontSize: '14px', color: '#856404' }}>
+              <div style={{ marginTop: '15px', padding: '10px', background: 'rgba(245, 158, 11, 0.15)', borderRadius: '8px', fontSize: '14px', color: '#f59e0b', border: '1px solid rgba(245, 158, 11, 0.3)' }}>
                 ⚠️ <strong>Important:</strong> Save this password now! You won't see it again. Give these credentials to the club head.
               </div>
             </div>
@@ -177,7 +178,7 @@ function AdminDashboard() {
 
           <form onSubmit={handleCreateOrganizer}>
             <div style={{ marginBottom: '20px' }}>
-              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Login Email *</label>
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500', color: '#e5e7eb' }}>Login Email *</label>
               <input
                 type="email"
                 name="loginEmail"
@@ -185,13 +186,13 @@ function AdminDashboard() {
                 onChange={handleInputChange}
                 required
                 placeholder="organizer@felicity.iiit.ac.in"
-                style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ddd' }}
+                style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid rgba(139, 157, 255, 0.3)', background: '#0f1419', color: '#e5e7eb' }}
               />
-              <small style={{ color: '#666' }}>This will be used to login</small>
+              <small style={{ color: '#9ca3af' }}>This will be used to login</small>
             </div>
 
             <div style={{ marginBottom: '20px' }}>
-              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Club/Team Name *</label>
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500', color: '#e5e7eb' }}>Club/Team Name *</label>
               <input
                 type="text"
                 name="organizerName"
@@ -199,17 +200,17 @@ function AdminDashboard() {
                 onChange={handleInputChange}
                 required
                 placeholder="E-Cell, TechTeam, Chess Club, etc."
-                style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ddd' }}
+                style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid rgba(139, 157, 255, 0.3)', background: '#0f1419', color: '#e5e7eb' }}
               />
             </div>
 
             <div style={{ marginBottom: '20px' }}>
-              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Category *</label>
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500', color: '#e5e7eb' }}>Category *</label>
               <select
                 name="category"
                 value={formData.category}
                 onChange={handleInputChange}
-                style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ddd' }}
+                style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid rgba(139, 157, 255, 0.3)', background: '#0f1419', color: '#e5e7eb' }}
               >
                 <option value="Technical">Technical</option>
                 <option value="Cultural">Cultural</option>
@@ -219,7 +220,7 @@ function AdminDashboard() {
             </div>
 
             <div style={{ marginBottom: '20px' }}>
-              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Description *</label>
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500', color: '#e5e7eb' }}>Description *</label>
               <textarea
                 name="description"
                 value={formData.description}
@@ -227,19 +228,19 @@ function AdminDashboard() {
                 required
                 rows="3"
                 placeholder="Brief description of the club/team"
-                style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ddd' }}
+                style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid rgba(139, 157, 255, 0.3)', background: '#0f1419', color: '#e5e7eb' }}
               />
             </div>
 
             <div style={{ marginBottom: '20px' }}>
-              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Contact Email</label>
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500', color: '#e5e7eb' }}>Contact Email</label>
               <input
                 type="email"
                 name="contactEmail"
                 value={formData.contactEmail}
                 onChange={handleInputChange}
                 placeholder="Public contact email"
-                style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ddd' }}
+                style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid rgba(139, 157, 255, 0.3)', background: '#0f1419', color: '#e5e7eb' }}
               />
             </div>
 
@@ -265,34 +266,34 @@ function AdminDashboard() {
 
       {/* Organizers List */}
       <div>
-        <h2>Existing Organizers ({organizers.length})</h2>
+        <h2 style={{ color: '#e5e7eb' }}>Existing Organizers ({organizers.length})</h2>
         {organizers.length === 0 ? (
-          <p style={{ color: '#666', padding: '20px', background: '#f8f9fa', borderRadius: '8px' }}>
+          <p style={{ color: '#9ca3af', padding: '20px', background: '#1a2332', borderRadius: '12px', border: '1px solid rgba(139, 157, 255, 0.2)' }}>
             No organizers yet. Create the first one using the button above!
           </p>
         ) : (
           <div style={{ display: 'grid', gap: '15px', marginTop: '20px' }}>
             {organizers.map((org) => (
-              <div key={org._id} style={{ background: '#fff', border: '1px solid #e5e7eb', padding: '20px', borderRadius: '8px' }}>
+              <div key={org._id} style={{ background: '#1a2332', border: '1px solid rgba(139, 157, 255, 0.2)', padding: '20px', borderRadius: '12px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
                   <div>
-                    <h3 style={{ margin: '0 0 10px 0', color: '#1f2937' }}>{org.organizerName}</h3>
-                    <p style={{ margin: '5px 0', color: '#666' }}>
+                    <h3 style={{ margin: '0 0 10px 0', color: '#e5e7eb' }}>{org.organizerName}</h3>
+                    <p style={{ margin: '5px 0', color: '#9ca3af' }}>
                       👤 {org.firstName} {org.lastName}
                     </p>
-                    <p style={{ margin: '5px 0', color: '#666' }}>
+                    <p style={{ margin: '5px 0', color: '#8b9dff' }}>
                       📧 {org.email}
                     </p>
                     <p style={{ margin: '5px 0' }}>
-                      <span style={{ background: '#e0e7ff', padding: '4px 12px', borderRadius: '12px', fontSize: '14px', fontWeight: '500' }}>
+                      <span style={{ background: 'rgba(139, 157, 255, 0.2)', color: '#8b9dff', padding: '4px 12px', borderRadius: '12px', fontSize: '14px', fontWeight: '500' }}>
                         {org.category}
                       </span>
                     </p>
-                    <p style={{ margin: '10px 0 0 0', color: '#666', fontSize: '14px' }}>
+                    <p style={{ margin: '10px 0 0 0', color: '#9ca3af', fontSize: '14px' }}>
                       {org.organizerDescription}
                     </p>
                   </div>
-                  <div style={{ fontSize: '12px', color: '#999' }}>
+                  <div style={{ fontSize: '12px', color: '#9ca3af' }}>
                     {org.isActive ? '✅ Active' : '❌ Inactive'}
                   </div>
                 </div>

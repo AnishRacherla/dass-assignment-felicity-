@@ -90,8 +90,8 @@ function ManageEvents() {
     <div style={{ padding: '40px', maxWidth: '1200px', margin: '0 auto' }}>
       {/* Header */}
       <div style={{ marginBottom: '30px' }}>
-        <h1>Manage My Events</h1>
-        <p style={{ color: '#666' }}>View and manage all your events</p>
+        <h1 style={{ color: '#e5e7eb' }}>Manage My Events</h1>
+        <p style={{ color: '#9ca3af' }}>View and manage all your events</p>
       </div>
 
       {/* Filter Tabs */}
@@ -107,7 +107,7 @@ function ManageEvents() {
               cursor: 'pointer',
               fontSize: '16px',
               fontWeight: '500',
-              color: filter === status ? '#4f46e5' : '#666',
+              color: filter === status ? '#4f46e5' : '#9ca3af',
               borderBottom: filter === status ? '2px solid #4f46e5' : '2px solid transparent',
               marginBottom: '-2px'
             }}
@@ -138,9 +138,9 @@ function ManageEvents() {
 
       {/* Events List */}
       {events.length === 0 ? (
-        <div style={{ textAlign: 'center', padding: '60px 20px', background: '#f8f9fa', borderRadius: '8px' }}>
-          <h3>No Events Found</h3>
-          <p style={{ color: '#666', marginBottom: '20px' }}>
+        <div style={{ textAlign: 'center', padding: '60px 20px', background: '#1a2332', borderRadius: '8px', border: '1px solid rgba(139, 157, 255, 0.2)' }}>
+          <h3 style={{ color: '#e5e7eb' }}>No Events Found</h3>
+          <p style={{ color: '#9ca3af', marginBottom: '20px' }}>
             {filter === 'ALL' ? 'Create your first event to get started!' : `No ${filter.toLowerCase()} events yet.`}
           </p>
         </div>
@@ -150,8 +150,8 @@ function ManageEvents() {
             <div
               key={event._id}
               style={{
-                background: '#fff',
-                border: '1px solid #e5e7eb',
+                background: '#1a2332',
+                border: '1px solid rgba(139, 157, 255, 0.2)',
                 padding: '25px',
                 borderRadius: '8px',
                 boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
@@ -183,9 +183,9 @@ function ManageEvents() {
                     </span>
                   </div>
 
-                  <h3 style={{ margin: '0 0 10px 0', fontSize: '20px' }}>{event.eventName}</h3>
+                  <h3 style={{ margin: '0 0 10px 0', fontSize: '20px', color: '#e5e7eb' }}>{event.eventName}</h3>
                   
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px', color: '#666', fontSize: '14px' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px', color: '#9ca3af', fontSize: '14px' }}>
                     <div>📅 Start: {formatDate(event.eventStartDate)}</div>
                     <div>🏁 End: {formatDate(event.eventEndDate)}</div>
                     <div>👥 Registrations: {event.currentRegistrations || 0} / {event.registrationLimit || '∞'}</div>
@@ -201,9 +201,9 @@ function ManageEvents() {
                     <button
                       onClick={() => handlePublish(event._id)}
                       style={{
-                        background: '#10b981',
-                        color: 'white',
-                        border: 'none',
+                        background: 'rgba(139, 157, 255, 0.15)',
+                        color: '#8b9dff',
+                        border: '1px solid rgba(139, 157, 255, 0.3)',
                         padding: '10px 20px',
                         borderRadius: '6px',
                         cursor: 'pointer',
@@ -219,9 +219,9 @@ function ManageEvents() {
                     <button
                       onClick={() => handleComplete(event._id)}
                       style={{
-                        background: '#8b5cf6',
-                        color: 'white',
-                        border: 'none',
+                        background: '#374151',
+                        color: '#e5e7eb',
+                        border: '1px solid #4b5563',
                         padding: '10px 20px',
                         borderRadius: '6px',
                         cursor: 'pointer',
@@ -236,9 +236,9 @@ function ManageEvents() {
                   <button
                     onClick={() => navigate(`/organizer/events/${event._id}/edit`)}
                     style={{
-                      background: '#f59e0b',
-                      color: 'white',
-                      border: 'none',
+                      background: '#374151',
+                      color: '#e5e7eb',
+                      border: '1px solid #4b5563',
                       padding: '10px 20px',
                       borderRadius: '6px',
                       cursor: 'pointer',
@@ -252,9 +252,9 @@ function ManageEvents() {
                   <button
                     onClick={() => navigate(`/organizer/events/${event._id}/details`)}
                     style={{
-                      background: '#4f46e5',
-                      color: 'white',
-                      border: 'none',
+                      background: 'rgba(139, 157, 255, 0.15)',
+                      color: '#8b9dff',
+                      border: '1px solid rgba(139, 157, 255, 0.3)',
                       padding: '10px 20px',
                       borderRadius: '6px',
                       cursor: 'pointer',
@@ -267,9 +267,9 @@ function ManageEvents() {
                   <button
                     onClick={() => handleDelete(event._id, event.eventName)}
                     style={{
-                      background: '#ef4444',
-                      color: 'white',
-                      border: 'none',
+                      background: '#374151',
+                      color: '#e5e7eb',
+                      border: '1px solid #4b5563',
                       padding: '10px 20px',
                       borderRadius: '6px',
                       cursor: 'pointer',

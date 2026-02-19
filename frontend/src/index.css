@@ -1,4 +1,4 @@
-/* Global styles - Basic reset and common styles */
+/* Global styles - Dark theme matching reference */
 
 * {
   margin: 0;
@@ -12,7 +12,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #f5f7fa;
+  background: #0f1419;
+  color: #e5e7eb;
 }
 
 code {
@@ -23,6 +24,7 @@ code {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: #0f1419;
 }
 
 .main-content {
