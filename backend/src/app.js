@@ -11,29 +11,8 @@ import { protect } from "./middleware/authMiddleware.js";
 
 const app = express();
 
-// CORS Configuration
-const corsOptions = {
-  origin: function (origin, callback) {
-    const allowedOrigins = [
-      'http://localhost:5173',
-      'http://localhost:4173',
-    ];
-    
-    // Allow all Vercel deployments
-    const isVercel = origin && origin.includes('vercel.app');
-    
-    if (!origin || allowedOrigins.includes(origin) || isVercel) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true,
-  optionsSuccessStatus: 200
-};
-
 // Middleware
-app.use(cors(corsOptions)); // Enable CORS for frontend
+app.use(cors()); // Enable CORS for all origins
 app.use(express.json({ limit: "10mb" })); // Parse JSON with larger limit for images
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
