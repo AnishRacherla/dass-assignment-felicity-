@@ -13,12 +13,21 @@ const app = express();
 
 // CORS Configuration
 const corsOptions = {
-  origin: [
-    'http://localhost:5173',
-    'http://localhost:4173',
-    'https://dass-assignment-felicity.vercel.app',
-    'https://dass-assignment-felicity-gdxhykg04-anishracherlas-projects.vercel.app'
-  ],
+  origin: function (origin, callback) {
+    const allowedOrigins = [
+      'http://localhost:5173',
+      'http://localhost:4173',
+    ];
+    
+    // Allow all Vercel deployments
+    const isVercel = origin && origin.includes('vercel.app');
+    
+    if (!origin || allowedOrigins.includes(origin) || isVercel) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
   optionsSuccessStatus: 200
 };
